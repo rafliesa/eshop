@@ -24,4 +24,28 @@ public class ProductRepository {
         return productData.removeIf(product -> product.getProductId().equals(id));
     }
 
+    public Product getProductById(String id) {
+        return productData.stream().filter(product -> product.getProductId().equals(id))
+                                   .findFirst()
+                                   .orElse(null);
+    }
+
+    public boolean updateProduct(String id, String productName, int productQuantity) {
+        Product product = getProductById(id);
+
+        if (product == null) {
+            return false;
+        }
+
+        if (productName != null && !productName.isEmpty()) {
+            product.setProductName(productName);
+        }
+
+        if (productQuantity >= 0) {
+            product.setProductQuantity(productQuantity);
+        }
+
+        return true;
+    }
+
 }

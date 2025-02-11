@@ -32,4 +32,13 @@ public class ProductServiceImpl implements ProductService {
     public void deleteById(String id) {
         productRepository.deleteById(id);
     }
+
+    public Product getProductById(String id) {
+        return productRepository.getProductById(id);
+    }
+
+    public boolean update(String id, String productName, int productQuantity) {
+        return productRepository.updateProduct(id,productName,productQuantity);
+    }
+
 }
