@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Iterator;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -64,6 +65,100 @@ public class ProductRepositoryTest {
         savedProduct = productIterator.next();
         assertEquals(product2.getProductId(), savedProduct.getProductId());
         assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testDeleteFound() {
+        Product product = new Product();
+        String id = product.getProductId();
+        productRepository.create(product);
+
+        Iterator<Product> iterator = productRepository.findAll();
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+
+        assertTrue(productRepository.deleteById(id));
+        assertFalse(productRepository.deleteById(id));
+    }
+
+
+    @Test
+    void testDeleteNotFound() {
+        String randomNonexistentID = UUID.randomUUID().toString();
+        assertFalse(productRepository.deleteById(randomNonexistentID));
+    }
+
+    @Test
+    void testEditNameSuccess() {
+        Product product = new Product();
+        String productId = product.getProductId();
+        product.setProductName("Sampo Cap Bambang");
+        productRepository.create(product);
+
+        productRepository.updateProduct(productId, "Sampo Cap Jawa", 0);
+
+        Iterator<Product> iterator = productRepository.findAll()    ;
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals("Sampo Cap Jawa",  product.getProductName());
+
+    }
+
+    @Test
+    void testProductNameRemainsUnchangedIfSetToBlank() {
+        Product product = new Product();
+        String productId = product.getProductId();
+        product.setProductName("Sampo Cap Bambang");
+        productRepository.create(product);
+        assertEquals("Sampo Cap Bambang", product.getProductName());
+
+        productRepository.updateProduct(productId, "", 0);
+
+        Iterator<Product> iterator = productRepository.findAll()    ;
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals("Sampo Cap Bambang",  product.getProductName());
+
+    }
+
+    @Test
+    void testEditQuantity() {
+        Product product = new Product();
+        String productId = product.getProductId();
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.updateProduct(productId, "", 0);
+
+        Iterator<Product> iterator = productRepository.findAll();
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals(0, product.getProductQuantity());
+    }
+
+
+    @Test
+    void testEditQuantityRemainsUnchangedIfSetToNegative() {
+        Product product = new Product();
+        String productId = product.getProductId();
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        productRepository.updateProduct(productId, "", -100);
+
+        Iterator<Product> iterator = productRepository.findAll();
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals(100, savedProduct.getProductQuantity());
     }
 
 }
