@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   pmd-code-scan:
-    permission:
+    permissions:
       contents: read
       security-events: write
       actions: read
