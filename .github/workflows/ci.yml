@@ -13,7 +13,7 @@ jobs:
       - name: Check out the Git repository
         uses: actions/checkout@v4
       - name: Set up Java toolchain
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@f957b03f74a8b1e5935151a2b9e5b28d3b983af7
         with:
           distribution: "temurin"
           java-version: "21"
