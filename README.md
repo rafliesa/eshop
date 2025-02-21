@@ -2,7 +2,7 @@
 
 <summary>Module 1</summary>
 <br>
-### Reflection 1
+### Reflection 1<br>
 #### You already implemented two new features using Spring Boot. Check again your source code and evaluate the coding standards that you have learned in this module. Write clean code principles and secure coding practices that have been applied to your code.  If you find any mistake in your source code, please explain how to improve your code.<br>
 Setelah mengerjakan modul ini, saya menjadi lebih suka menuliskan kode yang jelas maksudnya atau straightforward dibandingkan dengan kode yang memerlukan komentar. Selain itu, saya juga mulai menerapkan beberapa coding standard, seperti penamaan variabel yang jelas dan sesuai dengan naming convention. Tidak hanya itu, saya telah mengadopsi beberapa prinsip secure coding, seperti menggunakan UUID untuk ID daripada menggunakan integer yang diincrement.<br>
 
@@ -21,7 +21,7 @@ Menambahkan fungsional test suite baru dengan setup yang sama dapat menyebabkan 
 
 <details>
 <summary>Module 2</summary>
-### Reflection
+### Reflection <br>
 #### List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them.
 1. Pinned dependencies -> pastikan setiap versi actions terikat oleh hashing commit.
 2. SAST -> Menggunakan codeql untuk mengotomatiskan pemeriksaan keamanan.
