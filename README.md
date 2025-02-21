@@ -4,7 +4,7 @@
 <br>
 ### Reflection 1
 #### You already implemented two new features using Spring Boot. Check again your source code and evaluate the coding standards that you have learned in this module. Write clean code principles and secure coding practices that have been applied to your code.  If you find any mistake in your source code, please explain how to improve your code.<br>
-Setelah mengerjakan modul ini, saya menjadi lebih suka menuliskan kode yang jelas maksudnya atau straightforward dibandingkan dengan kode yang memerlukan komentar. Selain itu, saya juga mulai menerapkan beberapa coding standard, seperti penamaan variabel yang jelas dan sesuai dengan naming convention. Tidak hanya itu, saya telah mengadopsi beberapa prinsip secure coding, seperti menggunakan UUID untuk ID daripada menggunakan integer yang diincrement.
+Setelah mengerjakan modul ini, saya menjadi lebih suka menuliskan kode yang jelas maksudnya atau straightforward dibandingkan dengan kode yang memerlukan komentar. Selain itu, saya juga mulai menerapkan beberapa coding standard, seperti penamaan variabel yang jelas dan sesuai dengan naming convention. Tidak hanya itu, saya telah mengadopsi beberapa prinsip secure coding, seperti menggunakan UUID untuk ID daripada menggunakan integer yang diincrement.<br>
 
 ### Reflection 2
 ### After writing the unit test, how do you feel? How many unit tests should be made in a class? How to make sure that our unit tests are enough to verify our program? It would be good if you learned about code coverage. Code coverage is a metric that can help you understand how much of your source is tested. If you have 100% code coverage, does that mean your code has no bugs or errors? 
