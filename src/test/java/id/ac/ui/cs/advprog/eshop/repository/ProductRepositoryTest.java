@@ -124,7 +124,17 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductId(), savedProduct.getProductId());
         assertEquals("Sampo Cap Bambang",  product.getProductName());
 
+        productRepository.updateProduct(productId, null, 0);
+
+        iterator = productRepository.findAll()    ;
+        assertTrue(iterator.hasNext());
+
+        savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+        assertEquals("Sampo Cap Bambang",  product.getProductName());
+
     }
+
 
     @Test
     void testEditQuantity() {
@@ -159,6 +169,23 @@ public class ProductRepositoryTest {
         Product savedProduct = iterator.next();
         assertEquals(product.getProductId(), savedProduct.getProductId());
         assertEquals(100, savedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testEditProductNotFound() {
+        Product product = new Product();
+        String id = product.getProductId();
+        productRepository.create(product);
+
+        Iterator<Product> iterator = productRepository.findAll();
+        assertTrue(iterator.hasNext());
+
+        Product savedProduct = iterator.next();
+        assertEquals(product.getProductId(), savedProduct.getProductId());
+
+        assertTrue(productRepository.deleteById(id));
+
+        assertFalse(productRepository.updateProduct(id, "", 0));
     }
 
 }
