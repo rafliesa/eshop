@@ -1,4 +1,5 @@
-# Module 1
+<details>
+<summary>Module 1</summary>
 
 ## Reflection 1
 
@@ -22,7 +23,10 @@ Tidak ada aturan baku soal jumlah unit test dalam satu kelas, tapi idealnya seti
 
 Menambahkan fungsional test suite baru dengan setup yang sama dapat menyebabkan duplikasi kode, mengurangi keterbacaan, dan menyulitkan pemeliharaan. Hal ini melanggar prinsip DRY (Don't Repeat Yourself), meningkatkan kompleksitas, dan berisiko menciptakan inkonsistensi. Untuk menjaga kebersihan kode, setup umum sebaiknya diekstrak ke superclass atau metode utilitas yang dapat digunakan ulang. Selain itu, jika dua test suite memiliki struktur serupa, lebih baik menggabungkannya dalam satu kelas dengan beberapa metode pengujian untuk menghindari redundansi.
 
-# Module 2
+</details>
+
+<details>
+<summary>Module 2</summary>
 
 ## Reflection
 
@@ -35,3 +39,5 @@ Menambahkan fungsional test suite baru dengan setup yang sama dapat menyebabkan 
 **Question:** Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
 
 Menurut saya, proyek ini sudah mengimplementasikan CI/CD sesuai definisinya. Saya telah menerapkan Continuous Integration (CI) dengan otomatisasi proses build dan testing. Karena saya menggunakan Koyeb untuk deployment, setiap ada perubahan atau commit baru di GitHub akan terdeteksi secara otomatis dan langsung memicu proses deployment.
+
+</details>
