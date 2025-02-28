@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-public class CarServiceImpl implements CarService {
+public class CarServiceImpl implements BaseModelService<Car> {
     @Autowired
     private CarRepository carRepository;
 
@@ -36,12 +36,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void update(String carId, Car car) {
-        carRepository.update(carId, car);
+    public Car edit(String carId, Car car) {
+        return carRepository.edit(carId, car);
     }
 
     @Override
-    public void deleteCarById(String carId) {
-        carRepository.delete(carId);
+    public boolean delete(String carId) {
+        return carRepository.delete(carId);
     }
 }

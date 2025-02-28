@@ -54,22 +54,22 @@ class ProductServiceImplTest {
 
     @Test
     void testDeleteProductById() {
-        productService.deleteById("1");
-        verify(productRepository, times(1)).deleteById("1");
+        productService.delete("1");
+        verify(productRepository, times(1)).delete("1");
     }
 
     @Test
     void testGetProductById() {
-        when(productRepository.getProductById("1")).thenReturn(product);
-        Product foundProduct = productService.getProductById("1");
+        when(productRepository.findById("1")).thenReturn(product);
+        Product foundProduct = productService.findById("1");
         assertEquals(product, foundProduct);
     }
 
     @Test
     void testUpdateProduct() {
-        when(productRepository.updateProduct("1", "Updated Product", 20)).thenReturn(true);
-        boolean result = productService.update("1", "Updated Product", 20);
+        when(productRepository.edit("1", "Updated Product", 20)).thenReturn(true);
+        boolean result = productService.edit("1", "Updated Product", 20);
         assertTrue(result);
-        verify(productRepository, times(1)).updateProduct("1", "Updated Product", 20);
+        verify(productRepository, times(1)).edit("1", "Updated Product", 20);
     }
 }

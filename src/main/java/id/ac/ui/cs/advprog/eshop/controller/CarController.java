@@ -1,8 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
+import id.ac.ui.cs.advprog.eshop.service.BaseModelService;
 import org.springframework.ui.Model;
 import id.ac.ui.cs.advprog.eshop.model.Car;
-import id.ac.ui.cs.advprog.eshop.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController extends ProductController {
     @Autowired
-    private CarService carservice;
+    private BaseModelService<Car> carservice;
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
@@ -44,15 +44,15 @@ public class CarController extends ProductController {
 
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car, Model model) {
-        System.out.println(car.getCarId());
-        carservice.update(car.getCarId(), car);
+        System.out.println(car.getId());
+        carservice.edit(car.getId(), car);
 
         return "redirect:listCar";
     }
 
     @PostMapping("/deleteCar")
     public String deleteCar(@RequestParam("carId") String carId) {
-        carservice.deleteCarById(carId);
+        carservice.delete(carId);
         return "redirect:listCar";
     }
 

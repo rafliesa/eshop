@@ -71,7 +71,7 @@ class ProductControllerTest {
 
     @Test
     void testUpdateProductPage() {
-        when(service.getProductById("1")).thenReturn(product);
+        when(service.findById("1")).thenReturn(product);
         String viewName = productController.updateProductPage("1", model);
         assertEquals("editProduct", viewName);
         verify(model, times(1)).addAttribute("product", product);
