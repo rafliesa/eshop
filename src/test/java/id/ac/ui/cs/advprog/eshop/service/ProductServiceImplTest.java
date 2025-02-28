@@ -30,9 +30,9 @@ class ProductServiceImplTest {
     @BeforeEach
     void setUp() {
         product = new Product();
-        product.setProductId("1");
-        product.setProductName("Test Product");
-        product.setProductQuantity(10);
+        product.setId("1");
+        product.setName("Test Product");
+        product.setQuantity(10);
     }
 
     @Test
@@ -67,9 +67,9 @@ class ProductServiceImplTest {
 
     @Test
     void testUpdateProduct() {
-        when(productRepository.edit("1", "Updated Product", 20)).thenReturn(true);
-        boolean result = productService.edit("1", "Updated Product", 20);
-        assertTrue(result);
-        verify(productRepository, times(1)).edit("1", "Updated Product", 20);
+        when(productRepository.edit("1", product)).thenReturn(product);
+        Product updatedProduct = productService.edit("1", product);
+        assertEquals(product, updatedProduct);
+        verify(productRepository, times(1)).edit("1", product);
     }
 }

@@ -40,7 +40,7 @@ public class ProductRepository implements BaseModelrepository<Product> {
         for (int i = 0; i < productData.size(); i++) {
             Product product = productData.get(i);
             if (product.getId().equals(id)) {
-                product.setName(product.getName());
+                product.setName(newProduct.getName());
                 product.setQuantity(newProduct.getQuantity());
                 return product;
             }

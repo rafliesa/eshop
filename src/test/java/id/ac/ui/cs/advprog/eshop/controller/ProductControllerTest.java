@@ -1,7 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.service.ProductService;
+import id.ac.ui.cs.advprog.eshop.service.BaseModelService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ class ProductControllerTest {
     private ProductController productController;
 
     @Mock
-    private ProductService service;
+    private BaseModelService<Product> service;
 
     @Mock
     private Model model;
@@ -33,9 +33,9 @@ class ProductControllerTest {
     @BeforeEach
     void setUp() {
         product = new Product();
-        product.setProductId("1");
-        product.setProductName("Test Product");
-        product.setProductQuantity(10);
+        product.setId("1");
+        product.setName("Test Product");
+        product.setQuantity(10);
     }
 
     @Test
@@ -66,7 +66,7 @@ class ProductControllerTest {
     void testDeleteProduct() {
         String viewName = productController.deleteProduct("1");
         assertEquals("redirect:/product/list", viewName);
-        verify(service, times(1)).deleteById("1");
+        verify(service, times(1)).delete("1");
     }
 
     @Test
@@ -79,8 +79,8 @@ class ProductControllerTest {
 
     @Test
     void testUpdateProduct() {
-        String viewName = productController.updateProduct("1", "Updated Product", 20);
+        String viewName = productController.updateProduct(product, model);
         assertEquals("redirect:/product/list", viewName);
-        verify(service, times(1)).update("1", "Updated Product", 20);
+        verify(service, times(1)).edit(eq("1"), any(Product.class));
     }
 }
