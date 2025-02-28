@@ -41,3 +41,39 @@ Menambahkan fungsional test suite baru dengan setup yang sama dapat menyebabkan 
 Menurut saya, proyek ini sudah mengimplementasikan CI/CD sesuai definisinya. Saya telah menerapkan Continuous Integration (CI) dengan otomatisasi proses build dan testing. Karena saya menggunakan Koyeb untuk deployment, setiap ada perubahan atau commit baru di GitHub akan terdeteksi secara otomatis dan langsung memicu proses deployment.
 
 </details>
+
+<details>
+<summary>Module 3</summary>
+## Reflection 
+
+### 1) Explain what principles you apply to your project!
+Untuk membuat kode menjadi lebih terstruktur, saya memastikan project ini sudah memenuhi prinsip SOLID. Yakni:
+1. Single Responsibility Principle (SRP) <br>
+   Saya memastikan bahwa setiap class menjalankan tanggung jawabnya sendiri. Terlihat bahwa saya memecahkan controller, repository, dan service khusus untuk Product dan Car. <br>
+2. Open/Closed Principle (OCP) <br>
+    Saya membuat model abstract BaseModel untuk memungkinkan model lain melakukan ekstensi tanpa memodifikasi kode yang sudah ada, sehingga kode menjadi lebih modular.
+3. Liskov Substitution Principle (LSP) <br>
+   Untuk setiap subclass, saya tidak mengubah perilaku methods yang sudah didefinisikan pada superclass. Jadi setiap subclas melakukan hal yang percis sama pada method yang terdefinisi di superclassnya.
+4. Interface Segregation Principle (ISP) <br>
+    Untuk project ini, karena repository dan service untuk kedua model memiliki implementasi yang sama percis, saya menggabungkan keduanya. Namun jika terdapat fungsi yang beda dan hanya spesiifik untuk satu kelas, interface harus dipecah, jangan memaksakan fungsi yang tidak masuk akal pada suatu kelas.
+5. Dependency Inversion Principle (DIP) <br>
+    Setiap kali mendeklarasikan suatu kelas yang memiliki interface atau kelas abstrak, saya selalu menggunakann interface atau kelas abstractnya sebagai tipe data dari object tersebut. <br><br>
+
+### 2) Explain the advantages of applying SOLID principles to your project with examples.
+Dengan menggunakan prinsip SOLID, project saya menjadi: <br>
+1. Lebih mudah di-mantain <br>
+    Dengan prinsip SRP, jika saya ingin mengubah fungsi edit di repository Car, saya tidak perlu takut akan munculnya bug pada repostiory Product karena keduanya terdapat pada class yang berbeda.
+2. Lebih mudah diperluas <br>
+   Jika saya ingin menambahkan metode yang berkaitan dengan class produk, saya bisa menggunakan polymorphism tanpa mengubah kelas utama.
+3. Bugfree / bug less pada inheritance <br>
+   Dengan LSP, dapat dipastikan bahwa subclass dapat menggantikan superclass tanpa masalah karena perilaku-perilaku superclass tidak diubah pada subclass.
+
+### 3) Explain the disadvantages of not applying SOLID principles to your project with examples.
+1. Lebih sulit di-maintain <br>
+   Dengan prinsip SRP, jumlah class dan file dalam proyek bisa bertambah secara signifikan. Jika tidak dikelola dengan baik, ini bisa membuat navigasi dan pemahaman kode lebih sulit.
+2. Lebih sulit diperluas dalam beberapa situasi <br>
+   Jika ingin menambahkan metode yang berkaitan dengan suatu class, terkadang harus membuat banyak interface atau abstraksi tambahan agar tetap mengikuti OCP. Hal ini bisa memperumit kode daripada sekedar menambahkan metode langsung ke kelas yang ada.
+3. Potensi bug lebih tinggi akibat fragmentasi kode <br>
+   Dengan LSP, memastikan setiap subclass benar-benar dapat menggantikan superclass tanpa mengubah perilaku bisa menjadi tantangan. Jika aturan ini dilanggar tanpa disadari, bug bisa muncul di tempat yang sulit dilacak, terutama pada sistem yang kompleks.
+
+</details>
