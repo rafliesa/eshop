@@ -28,10 +28,10 @@ public class CarController extends ProductController {
         return "redirect:listCar";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/listCar")
     public String carListPage(Model model) {
-        List<Car> carList = carservice.findAll();
-        model.addAttribute("carList", carList);
+        List<Car> allCars = carservice.findAll();
+        model.addAttribute("cars", allCars);
         return "carList";
     }
 
